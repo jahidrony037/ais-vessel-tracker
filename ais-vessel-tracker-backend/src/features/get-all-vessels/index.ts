@@ -1,1 +1,1 @@
-export {};
+export { getAllVesselsHandler } from "./handler";

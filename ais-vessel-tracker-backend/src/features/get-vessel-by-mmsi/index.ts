@@ -1,1 +1,1 @@
-export {};
+export { getVesselByMmsiHandler } from "./handler";
