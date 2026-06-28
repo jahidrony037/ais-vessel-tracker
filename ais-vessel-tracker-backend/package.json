@@ -5,6 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "mock": "NODE_OPTIONS='--openssl-legacy-provider' ts-node-dev --respawn --transpile-only src/mock-feed.ts",
     "build": "tsc",
     "start": "node dist/server.js"
   },
