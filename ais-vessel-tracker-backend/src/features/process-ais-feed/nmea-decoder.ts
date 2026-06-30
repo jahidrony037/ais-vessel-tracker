@@ -34,7 +34,6 @@ export function decodeNmea(sentence: string): DecodedVessel | null {
       vesselType: msg.shipType ?? 0,
     };
   } catch {
-    // Malformed sentence — silently skip
     return null;
   }
 }

@@ -1,0 +1,116 @@
+/* Map Container */
+.map-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.map-container--centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-loader-bg);
+}
+
+.map-leaflet {
+  width: 100%;
+  height: 100%;
+}
+
+/* Loader */
+.map-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.map-loader__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-spinner-track);
+  border-top-color: var(--color-vessel);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.map-loader__text {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error  */
+.map-error {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  color: var(--color-error-text);
+  background: var(--color-error-bg);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  margin: 0;
+  text-align: center;
+  max-width: 90vw;
+}
+
+/*  Vessel Count Badge */
+.map-badge {
+  position: absolute;
+  bottom: var(--spacing-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: var(--color-overlay-bg);
+  color: var(--color-overlay-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-pill);
+  white-space: nowrap;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+/*Vessel Icon */
+.vessel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  transition: transform var(--transition-fast);
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .map-badge {
+    bottom: var(--spacing-md);
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+
+  .map-loader__spinner {
+    width: 32px;
+    height: 32px;
+  }
+
+  .map-loader__text {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .map-badge {
+    bottom: var(--spacing-sm);
+  }
+}
