@@ -1,0 +1,42 @@
+.vessel-sidebar {
+  width: 340px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-left: 1px solid #e5e7eb;
+}
+
+.vessel-sidebar__header {
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.vessel-sidebar__header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.vessel-sidebar__empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.vessel-sidebar__empty p {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.vessel-sidebar__empty span {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.vessel-sidebar__content {
+  padding: 20px;
+}

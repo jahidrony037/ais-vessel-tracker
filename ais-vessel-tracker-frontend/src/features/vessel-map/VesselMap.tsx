@@ -53,6 +53,9 @@ const VesselMap = () => {
 
   useVesselSocket(handleVesselUpdate);
 
+  const selectedVessel =
+    selectedMmsi === null ? undefined : vessels.get(selectedMmsi);
+
   if (loading) {
     return (
       <div className="map-container map-container--centered">
