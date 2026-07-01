@@ -11,6 +11,8 @@
   --color-error-bg: #fff5f5;
   --color-error-text: #c53030;
   --color-spinner-track: #e2e8f0;
+  --color-vessel-selected: rgb(22, 58, 112);
+  --color-vessel-selected-overlay: rgba(22, 58, 112, 0.18);
 
   /*  Spacing  */
   --spacing-xs: 4px;

@@ -13,6 +13,14 @@ const VesselMap = () => {
   const [vessels, setVessels] = useState<Map<number, Vessel>>(new Map());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedMmsi, setSelectedMmsi] = useState<number | null>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("selectedMmsi");
+    if (stored) {
+      setSelectedMmsi(Number(stored));
+    }
+  }, []);
 
   useEffect(() => {
     fetchAllVessels()
@@ -25,6 +33,18 @@ const VesselMap = () => {
         );
       })
       .finally(() => setLoading(false));
+  }, []);
+
+  const handleSelectVessel = useCallback((mmsi: number) => {
+    setSelectedMmsi((prev) => {
+      const next = prev === mmsi ? null : mmsi;
+      if (next === null) {
+        localStorage.removeItem("selectedMmsi");
+      } else {
+        localStorage.setItem("selectedMmsi", String(next));
+      }
+      return next;
+    });
   }, []);
 
   const handleVesselUpdate = useCallback((vessel: Vessel) => {
@@ -64,9 +84,17 @@ const VesselMap = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         />
-        {Array.from(vessels.values()).map((vessel) => (
-          <VesselMarker key={vessel.mmsi} vessel={vessel} />
-        ))}
+        {Array.from(vessels.values()).map((vessel) => {
+          const isSelected = selectedMmsi === vessel.mmsi;
+          return (
+            <VesselMarker
+              key={vessel.mmsi}
+              vessel={vessel}
+              selected={isSelected}
+              onSelect={handleSelectVessel}
+            />
+          );
+        })}
       </MapContainer>
 
       <div className="map-badge">🚢 {vessels.size} vessels</div>
